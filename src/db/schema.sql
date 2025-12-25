@@ -1,15 +1,17 @@
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
-    email VARCHAR UNIQUE,
-    password VARCHAR,
+    nome VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE workouts (
     id SERIAL PRIMARY KEY,
     user_id INT REFERENCES users,
-    exercise VARCHAR,
+    exercise VARCHAR(255) NOT NULL,
     sets INT,
     reps INT,
     weight DECIMAL,
-    date DATE
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
